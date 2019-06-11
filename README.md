@@ -19,7 +19,7 @@ If you use this code, please cite:
 ```
 @ARTICLE{tsintotas2019probabilistic,
   title={Probabilistic Appearance-Based Place Recognition Through Bag of Tracked Words},  
-  author={K. A. {Tsintotas} and L. {Bampis} and A. {Gasteratos}},   
+  author={K. A. Tsintotas and L. Bampis and A. Gasteratos},   
   journal={IEEE Robotics and Automation Letters},     
   year={2019},   
   volume={4},  
