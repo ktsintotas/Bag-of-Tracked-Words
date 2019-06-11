@@ -5,7 +5,7 @@ This open source MATLAB algorith presents a straightforward probabilistic appear
 Note that the Bag-of-Track-Words approach is a research code. The authors are not responsible for any errors it may contain. **Use it at your own risk!**
 
 ## Conditions of use
-Bag-of-Track-Words is free of license terms. 
+Bag-of-Track-Words is distributed under the terms of the [MIT License](https://github.com/ktsintotas/Bag-of-Tracked-Words/blob/master/LICENSE).
 
 ## Related publication
 The details of the algorithm are explained in the [following publication](https://ieeexplore.ieee.org/document/8633405):
