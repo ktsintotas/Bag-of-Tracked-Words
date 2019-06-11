@@ -4,14 +4,14 @@ This algorith presents a straightforward probabilistic appearance-based Loop Clo
 
 Note that the Bag-of-Track-Words approach is a research code. The authors are not responsible for any errors it may contain. **Use it at your own risk!**
 
-# Conditions of use
+## Conditions of use
 Bag-of-Track-Words is free of license terms. 
 
-# Related publication
+## Related publication
 The details of the algorithm are explained in the [following publication](https://ieeexplore.ieee.org/document/8633405):
 
-Probabilistic Appearance-Based Place Recognition Through Bag of Tracked Words
-Konstantinos A. Tsintotas, Loukas Bampis, and Antonios Gasteratos
+Probabilistic Appearance-Based Place Recognition Through Bag of Tracked Words<br/>
+Konstantinos A. Tsintotas, Loukas Bampis, and Antonios Gasteratos<br/>
 IEEE Robotics and Automation Letters, Vol. 4, No. 2, Pgs. 1737 - 1744 (April 2019)
 
 If you use this code, please cite:
@@ -29,3 +29,5 @@ If you use this code, please cite:
   month={April}
 }
 ```
+## Contact
+If you have problems or questions using this code, please contact the author (ktsintot@pme.duth.gr). Ground truth requests and contributions are totally welcome.
