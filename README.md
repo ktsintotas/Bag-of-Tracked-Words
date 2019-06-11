@@ -20,13 +20,13 @@ If you use this code, please cite:
 @ARTICLE{tsintotas2019probabilistic,
   title={Probabilistic Appearance-Based Place Recognition Through Bag of Tracked Words},  
   author={K. A. Tsintotas and L. Bampis and A. Gasteratos},   
-  journal={IEEE Robotics and Automation Letters},     
+  journal={IEEE Robotics and Automation Letters},
+  volume={4},
+  number={2},
+  pages={1737-1744},
   year={2019},   
-  volume={4},  
-  number={2},  
-  pages={1737-1744},  
-  doi={10.1109/LRA.2019.2897151},  
-  month={April}
+  month={April}, 
+  doi={10.1109/LRA.2019.2897151}  
 }
 ```
 ## Contact
