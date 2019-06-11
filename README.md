@@ -10,7 +10,7 @@ Bag-of-Track-Words is free of license terms.
 ## Related publication
 The details of the algorithm are explained in the [following publication](https://ieeexplore.ieee.org/document/8633405):
 
-Probabilistic Appearance-Based Place Recognition Through Bag of Tracked Words<br/>
+**Probabilistic Appearance-Based Place Recognition Through Bag of Tracked Words<br/>**
 Konstantinos A. Tsintotas, Loukas Bampis, and Antonios Gasteratos<br/>
 IEEE Robotics and Automation Letters, Vol. 4, No. 2, Pgs. 1737 - 1744 (April 2019)
 
