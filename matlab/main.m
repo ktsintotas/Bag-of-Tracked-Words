@@ -28,7 +28,7 @@ BoTW = buildingDatabase(visualData, params);
 
 matches = queryingDatabase(params, visualData, BoTW);
 
-% load ground truth data
+% load the ground truth data for the corresponding dataset
 results = methodEvaluation(params, matches, groundTruthMatrix);
 
 
