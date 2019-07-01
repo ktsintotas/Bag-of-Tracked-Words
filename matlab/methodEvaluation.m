@@ -6,12 +6,12 @@ function results = methodEvaluation(params, matches, groundTruthMatrix)
 
     loopClosureMatrix = matches.loopClosureMatrixRANSAC;
 
-    if visualizationResults == true
+    if params.visualizationResults == true
         figure('IntegerHandle','on','Name','Loop Closure Matrix');
         spy(matches.loopClosureMatrixRANSAC);
     end
     
-    if visualizationResults == true
+    if params.visualizationResults == true
         figure('IntegerHandle','on','Name','Ground Truth Matrix');
         spy(groundTruthMatrix);
     end
@@ -24,7 +24,7 @@ function results = methodEvaluation(params, matches, groundTruthMatrix)
     tempTP = logical (groundTruthMatrix.*loopClosureMatrix); 
     tempSumTP = sum(tempTP, 2);
     truePositives = sum(tempSumTP, 1);
-    if visualizationResults == true
+    if params.visualizationResults == true
         figure('IntegerHandle','on','Name','True Positives');
         spy(tempTP);
     end
@@ -34,7 +34,7 @@ function results = methodEvaluation(params, matches, groundTruthMatrix)
     tempFP = logical (loopClosureMatrix.* not(groundTruthMatrix)); 
     tempSumFP = sum(tempFP, 2);
     falsePositives = sum(tempSumFP, 1);
-    if visualizationResults == true    
+    if params.visualizationResults == true    
         figure('IntegerHandle','on','Name','False Positives');
         spy(tempFP);
     end

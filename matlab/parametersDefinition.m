@@ -22,12 +22,15 @@ function params = parametersDefinition()
     params.visualData.save = true;
     
     % database
-    params.buildingDatabase.load = false;
-    params.buildingDatabase.save = false;
+    params.buildingDatabase.load = true;
+    params.buildingDatabase.save = true;
     
     % matches
-    params.queryingDatabase.load = false;
-    params.queryingDatabase.save = false;
+    params.queryingDatabase.load = true;
+    params.queryingDatabase.save = true;
+    
+    % evaluation
+    params.visualizationResults = true;
     
     % number of maximum points fed into the tracker, ni
     params.numPointsToTrack = int16(200);
