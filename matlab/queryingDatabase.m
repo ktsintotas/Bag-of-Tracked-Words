@@ -12,8 +12,7 @@ function matches = queryingDatabase(params, visualData, BoTW)
         matches.matches = zeros(visualData.imagesLoaded, 1, 'int16');
         matches.matchesRANSAC = zeros(visualData.imagesLoaded, 1, 'int16');
         
-        for It = int16(1 : visualData.imagesLoaded)    
-            disp(It);
+        for It = int16(1 : visualData.imagesLoaded)
             
             % B.1 MAP VOTING
             % indicating the vocabulary area which would be avoided  
