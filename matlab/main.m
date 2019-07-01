@@ -16,7 +16,7 @@
 % MIT License for more details. <https://opensource.org/licenses/MIT>
 
 clear all; close all;
-dataPath = ('C:\Users\Konstantinos\OneDrive - Democritus University of Thrace\PhD Documents\13-Datasets\KITTI\data_odometry_gray\sequences\00\image_1\'); 
+dataPath = ('images path'); 
 dataFormat = '*.png'; % e.g., for png input data
 
 params = parametersDefinition();
@@ -24,13 +24,11 @@ params = parametersDefinition();
 visualData = incomingVisualData(params, dataPath, dataFormat);
 clear vars dataPath dataFormat
 
-tic
 BoTW = buildingDatabase(visualData, params);
-toc
 
-tic
 matches = queryingDatabase(params, visualData, BoTW);
-toc
 
+% load ground truth data
+results = methodEvaluation(params, matches, groundTruthMatrixEuRoc);
 
 
