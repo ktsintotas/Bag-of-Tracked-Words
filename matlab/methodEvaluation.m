@@ -3,12 +3,16 @@ function results = methodEvaluation(params, matches, groundTruthMatrix)
 %% Method Evaluation
 
     results = zeros(1, 6);
-
-    loopClosureMatrix = matches.loopClosureMatrixRANSAC;
+    
+    if params.verification == true
+        loopClosureMatrix = matches.loopClosureMatrixRANSAC;
+    else
+        loopClosureMatrix = matches.loopClosureMatrix;
+    end
 
     if params.visualizationResults == true
         figure('IntegerHandle','on','Name','Loop Closure Matrix');
-        spy(matches.loopClosureMatrixRANSAC);
+        spy(loopClosureMatrix);
     end
     
     if params.visualizationResults == true
