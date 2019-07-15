@@ -53,7 +53,7 @@ function matches = queryingDatabase(params, visualData, BoTW)
                     end
                 end
                 % compute binomial for voted images
-                imagesForBinomial = int16(find(matches.votesMatrix(It, :) >= 10));
+                imagesForBinomial = int16(find(matches.votesMatrix(It, :) >= params.inliersTheshold));
                                 
                 % B.2 PROBABILISTIC BELIEF GENERATOR                
                 % locations which pass the two conditions
@@ -88,7 +88,7 @@ function matches = queryingDatabase(params, visualData, BoTW)
                     matchedPoints1 = BoTW.queryPoints{It}(indexPairs(:, 1), :);
                     matchedPoints2 = locationPoints{properImage}(indexPairs(:, 2), :);
                     try
-                        [~, inliersIndex, ~] = estimateFundamentalMatrix(matchedPoints1, matchedPoints2, 'Method', 'RANSAC', 'DistanceThreshold', 1);                    
+                        [~, inliersIndex, ~] = estimateFundamentalMatrix(matchedPoints1, matchedPoints2, 'Method', 'RANSAC', 'DistanceType', 'Algebraic', 'DistanceThreshold', 1);                    
                         if sum(inliersIndex) >= params.inliersTheshold            
                             matches.loopClosureMatrixRANSAC(It, properImage) = true; 
                             matches.matchesRANSAC(It) = properImage;
