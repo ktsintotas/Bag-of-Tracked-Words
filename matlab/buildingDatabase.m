@@ -44,7 +44,7 @@ function BoTW = buildingDatabase(visualData, params)
         BoTW.queryDescriptors = cell(1, visualData.imagesLoaded);
 
         for It = int16(1 : visualData.imagesLoaded)
-            
+
             % initialization of points and descriptors   
             if It == 1
                 
@@ -59,7 +59,7 @@ function BoTW = buildingDatabase(visualData, params)
                     trackedDescriptorsBag = mat2cell(BoTW.queryDescriptors{It}, ones(1, params.numPointsToTrack));
                 else 
                     BoTW.queryPoints{It}= visualData.pointsSURF{It}.Location(1 : size(visualData.pointsSURF{It}, 1), :);
-                    trackedPointsBag = mat2cell(trackedPointsBag, ones(1, size(visualData.pointsSURF{It}, 1)));                   
+                    trackedPointsBag = mat2cell(BoTW.queryPoints{It}, ones(1, size(visualData.pointsSURF{It}, 1)));                   
                     BoTW.queryDescriptors{It} = visualData.featuresSURF{It}(1 : size(visualData.featuresSURF{It}, 1), :);
                     trackedDescriptorsBag = mat2cell(BoTW.queryDescriptors{It}, ones(1, size(visualData.featuresSURF{It}, 1)));
                 end    
@@ -123,7 +123,7 @@ function BoTW = buildingDatabase(visualData, params)
                         % initialization new point representation
                         pointRepeatability(tw) = 1; 
                     % in cases where the plane is not textured enough
-                    elseif trackObservation(tw) == false && newPointCounter >= size(pointsToSearch, 1) 
+                    elseif trackObservation(tw) == false && newPointCounter >= size(pointsToSearch, 1) && size(BoTW.queryPoints{It}, 1) >= tw
                     	deletion = true;
                         pointsToDelete(tw) = true;                        
                     end
