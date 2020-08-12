@@ -15,7 +15,7 @@
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % MIT License for more details. <https://opensource.org/licenses/MIT>
 
-function matches = matchesInitialization(visualData, params)
+function matches = matchesInitialization(visualData)
         
         % votes' matrix to visualize the voting procedure
         matches.votesMatrix = zeros(visualData.imagesLoaded, visualData.imagesLoaded, 'uint16');
