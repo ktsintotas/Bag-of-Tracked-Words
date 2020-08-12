@@ -1,14 +1,25 @@
+% 
+
+% Copyright 2019, Konstantinos Tsintotas
+% ktsintot@pme.duth.gr
+%
+% This file is part of Bag-of-Tracked-Words framework for loop closure
+% detection
+%
+% Bag-of-Tracked-Words framework is free software: you can redistribute 
+% it and/or modify it under the terms of the MIT License as 
+% published by the corresponding authors.
+%  
+% Bag-of-Tracked-Words pipeline is distributed in the hope that it will be 
+% useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% MIT License for more details. <https://opensource.org/licenses/MIT>
+
 function results = methodEvaluation(params, matches, groundTruthMatrix) 
 
-%% Method Evaluation
-
     results = zeros(1, 6);
-    
-    if params.verification == true
-        loopClosureMatrix = matches.loopClosureMatrixRANSAC;
-    else
-        loopClosureMatrix = matches.loopClosureMatrix;
-    end
+       
+    loopClosureMatrix = matches.loopClosureMatrix;
 
     if params.visualizationResults == true
         figure('IntegerHandle','on','Name','Loop Closure Matrix');
@@ -50,8 +61,9 @@ function results = methodEvaluation(params, matches, groundTruthMatrix)
     % Results
     results(1, 1) = precisionScore;
     results(1, 2) = recallScore;   
-    results(1, 3) = truePositives;   
-    results(1, 4) = falsePositives;
-    results(1, 5) = params.probabilityThreshold;
+    results(1, 3) = int16(truePositives);   
+    results(1, 4) = int16(falsePositives);
+    results(1, 5) = params.queryingDatabase.observationThreshold;    
     results(1, 6) = groundTruthNumber;
+    
 end
