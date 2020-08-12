@@ -22,7 +22,7 @@ function [properImage, inliersTotal] = geometricalCheck(It, iBoTW, params, candi
     indexPairs = matchFeatures(iBoTW.queryDescriptors{It}, visualData.features{candidate}, ...
         'Unique', true, 'Method', 'Exhaustive', 'MatchThreshold', 10.0, 'MaxRatio', params.queryingDatabase.maxRatio);
 
-    if size(indexPairs, 1) >= 9
+    if size(indexPairs, 1) >= params.queryingDatabase.inliersTheshold
         matchedPoints1 = iBoTW.queryPoints{It}(indexPairs(:, 1), :);
         matchedPoints2 = visualData.points{candidate}.Location(indexPairs(:, 2), :);
         try
