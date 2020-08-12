@@ -15,20 +15,28 @@
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % MIT License for more details. <https://opensource.org/licenses/MIT>
 
-clear all; close all;
-dataPath = ('images path'); 
+dataPath = ('images path\'); 
 dataFormat = '*.png'; % e.g., for png input data
 
+% parameters' definitions
 params = parametersDefinition();
 
-visualData = incomingVisualData(params, dataPath, dataFormat);
-clear vars dataPath dataFormat
+% extraction of visual sensory information
+[visualData, timer] = incomingVisualData(params, dataPath, dataFormat);
 
-BoTW = buildingDatabase(visualData, params);
+% dataset's frame rate definition
+visualData.frameRate = %; 
 
-matches = queryingDatabase(params, visualData, BoTW);
+% timers memory allocation
+timer = timersInitialization(visualData, timer);
+
+% 1) the vocabulary build
+[BoTW, timer] = buildingDatabase(visualData, params, timer);
+% 2)  the query procedure
+[matches, BoTW, timer] = queryingDatabaseBaseline(params, visualData, BoTW, timer);
 
 % load the ground truth data for the corresponding dataset
+groundTruthMatrix = %;
+
+% evaluate the results
 results = methodEvaluation(params, matches, groundTruthMatrix);
-
-
