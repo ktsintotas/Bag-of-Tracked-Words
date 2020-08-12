@@ -15,44 +15,73 @@
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % MIT License for more details. <https://opensource.org/licenses/MIT>
 
-function visualData = incomingVisualData(params, dataPath, dataFormat)
+function [visualData, timer] = incomingVisualData(params, dataPath, dataFormat)
     
     % shall we load the visual information and its' extracted variables?
     if params.visualData.load == true && exist('results/visualData.mat', 'file')    
-        load('results/visualData.mat');  
-        
+        load('results/visualData.mat'); 
     else       
-        
-        % list images
+        % list the dataset's images
         images = dir([dataPath dataFormat]);
         % fields to be removed from images' structure
         fields = {'folder','date','bytes','isdir','datenum'};    
         images = rmfield(images, fields);
-        % local points extraction and description through SURF method
-        visualData.imagesLoaded = int16(size(images,1));
-        
-        % images' space preallocation
+        % the total number of the incomming visual sensory information
+        visualData.imagesLoaded = uint16(size(images, 1));
+
+%         % uncomment for the downsampled New College dataset
+%         images(1 : 2 : size(images,1)) = []; % Extracting the left camera measurements
+%         images = images(1 : 20 : size(images, 1));
+%         visualData.imagesLoaded = int16(size(images,1)); 
+
+%         % uncomment for City Centre dataset
+%         images(2 : 2 : size(images,1)) = []; % Extracting the left camera measurements
+%         visualData.imagesLoaded = uint16(size(images,1));
+
+        % pre-allocation of images' space
         visualData.inputImage = cell(1, visualData.imagesLoaded);
-        % images descriptors' space preallocation
-        visualData.featuresSURF = cell(1, visualData.imagesLoaded);
-        % images points' space preallocation
-        visualData.pointsSURF = cell(1, visualData.imagesLoaded);
+        % pre-allocation of images' descriptors space
+        visualData.features = cell(1, visualData.imagesLoaded);
+        % pre-allocation of images' points space
+        visualData.points = cell(1, visualData.imagesLoaded);
         
-        for i = 1 : visualData.imagesLoaded
-            visualData.inputImage{i} = imread([dataPath images(i).name]);
-            % if input data is RGB convert it to grayscale
-            if size(visualData.inputImage{i}, 3) == 3
-                visualData.inputImage{i} = rgb2gray(visualData.inputImage{i});
+        %  pre-allocation of timer for feature detection
+        timer.featuresDetection = zeros(visualData.imagesLoaded, 1, 'single');
+        % pre-allocation of timer for feature description
+        timer.featuresDescription = zeros(visualData.imagesLoaded, 1, 'single');
+        
+        for It = 1 : visualData.imagesLoaded            
+            
+            % display the current frame
+            disp(It)
+            % read the incoming camera measurement
+            visualData.inputImage{It} = imread([dataPath images(It).name]);
+            
+            % if  the input data is RGB, then convert it to a grayscale one
+            if size(visualData.inputImage{It}, 3) == 3
+                visualData.inputImage{It} = rgb2gray(visualData.inputImage{It});
             end
-            % SURF points' detection
-            visualData.pointsSURF{i} = detectSURFFeatures(visualData.inputImage{i},  'MetricThreshold', 400.0);
-            % SURF points' description
-            [visualData.featuresSURF{i}, ~] = extractFeatures(visualData.inputImage{i}, visualData.pointsSURF{i}, 'Method','SURF');      
+            
+            % start the timer for the points' detection
+            tic
+            % points detection
+            visualData.points{It} = detectSURFFeatures(visualData.inputImage{It},  'MetricThreshold', params.incomingVisualData.featuresResponse);
+            % stop the timer for the points' detection
+            timer.featuresDetection(It, 1) = toc;
+            
+            % start the timer for the points' description
+            tic
+            % Points' description
+            [visualData.features{It}, visualData.points{It}] = ...
+                extractFeatures(visualData.inputImage{It}, visualData.points{It}, 'Method', 'Auto', 'FeatureSize', params.incomingVisualData.descriptorDimension);
+            % stop the timer for the points' description
+            timer.featuresDescription(It, 1) = toc;            
         end
         
-        % save the variables if not a file allready exists
+        % save the variables if not they not allready exist
         if params.visualData.save
-            save('results/visualData', 'visualData', '-v7.3');
+            save('results/visualData', 'visualData', 'timer', '-v7.3');
         end
-    end
+        
+    end    
 end
