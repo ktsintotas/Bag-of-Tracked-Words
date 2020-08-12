@@ -1,15 +1,16 @@
-%
+% 
 
-% Copyright 2020, Konstantinos A. Tsintotas
+% Copyright 2019, Konstantinos Tsintotas
 % ktsintot@pme.duth.gr
 %
-% This file is part of openBoTW framework for visual loop closure detection
+% This file is part of Bag-of-Tracked-Words framework for loop closure
+% detection
 %
-% openBoTW framework is free software: you can redistribute 
+% Bag-of-Tracked-Words framework is free software: you can redistribute 
 % it and/or modify it under the terms of the MIT License as 
 % published by the corresponding authors.
 %  
-% openBoTW pipeline is distributed in the hope that it will be 
+% Bag-of-Tracked-Words pipeline is distributed in the hope that it will be 
 % useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % MIT License for more details. <https://opensource.org/licenses/MIT>
@@ -21,9 +22,7 @@ function BoTW = initializationBoTW(visualData, params)
         % tracked words' indexing
         BoTW.twIndex = uint16(zeros(100000, 3));
         % tracked words' location indexing
-        BoTW.twLocationIndex = false(100000, size(visualData.inputImage, 2));
-        % the deteled words
-        BoTW.deleted = uint16(0);
+        BoTW.twLocationIndex = false(100000, size(visualData.inputImage, 2));;
         % lamda is counting the number of tracked words belonging to the traversed location
         BoTW.lamda = zeros(1, size(visualData.inputImage, 2), 'uint16');
         % maximum active point variable for the query process
