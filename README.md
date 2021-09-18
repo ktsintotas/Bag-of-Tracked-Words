@@ -12,22 +12,23 @@ The details of the algorithm are explained in the [following publication](https:
 
 **Probabilistic Appearance-Based Place Recognition Through Bag of Tracked Words<br/>**
 Konstantinos A. Tsintotas, Loukas Bampis, and Antonios Gasteratos<br/>
-IEEE Robotics and Automation Letters, Vol. 4, No. 2, Pgs. 1737 - 1744 (April 2019)
+IEEE Robotics and Automation Letters. 
+Presented at the IEEE international conference on robotics and automation (ICRA).
 
 If you use this code, please cite:
 
 ```
-@ARTICLE{tsintotas2019probabilistic,
+@article{tsintotas2019botw,
   title={Probabilistic Appearance-Based Place Recognition Through Bag of Tracked Words},  
-  author={K. A. Tsintotas and L. Bampis and A. Gasteratos},   
+  author={K. A. Tsintotas and L. Bampis and A. Gasteratos}, 
   journal={IEEE Robotics and Automation Letters},
   volume={4},
   number={2},
   pages={1737-1744},
-  year={2019},   
-  month={April}, 
-  doi={10.1109/LRA.2019.2897151}  
+  year={2019},
+  month={April},
+  doi={10.1109/LRA.2019.2897151}
 }
 ```
 ## Contact
-If you have problems or questions using this code, please contact the author (ktsintot@pme.duth.gr). Ground truth requests and contributions are totally welcome.
+If you have problems or questions using this code, please contact the author (e-mail address: ktsintot@pme.duth.gr, ktsintotas@icloud.com). Contributions are totally welcome.
